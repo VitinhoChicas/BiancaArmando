@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adivinhe o Lugar</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top:1px;
+      padding: 0;
+      color:#fefcff;
+      background-color: #373636;
+      font-size:23px;
+      }
+
+    img {
+      max-width: 90%;
+      height: auto;
+      margin: 20px;
+      border-radius:3px;
+      border:solid 2px #8b9aff;
+    }
+
+    #quiz-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      
+    }
+
+    #results-container {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #373636;
+      z-index:1;
+      overflow-y: scroll;
+      margin-top:28px;
+      
+    }
+
+    #results-table {
+      margin-top: 1px;
+      width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+    }
+
+    #restart-button {
+      margin-top:5px;
+      padding: 7px;
+      background-color:black;
+      color:#fefcff;
+      font-size: 14px;
+      cursor: pointer;
+      border:inset 2px #8b9aff;      
+      lefy:-110;
+    }
+
+    #restart-button:hover {
+      background-color: #45a049;
+    }
+  
+  h2{
+    font-size:28px;
+    background-color: #373636;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color:#8b9aff;
+    
+  }
+  
+  
+  button{
+      margin-top:5px;
+      padding: 7px;
+      background-color:black;
+      color:#fefcff;
+      font-size: 14px;
+      cursor: pointer;
+      border:inset 2px #8b9aff;
+    }
+  
+  .pA{
+    font-family: Arial, sans-serif;
+    color:#3BFF72;
+    font-size:26px;
+  }
+  
+  .pE{
+    font-family: Arial, sans-serif;
+    color:red;
+    font-size:26px;
+  }
+  
+  .pRC{
+    font-family: Arial, sans-serif;
+    color:#fefcff;
+    font-size:22px;
+  }
+  
+  .imgfechar{ 
+  position:absolute;
+  top:-20px;
+  left:365px;
+  width:20px;
+  height:20px;
+}
+  
+  .imgVolta{ 
+  position:absolute;
+  top:-20px;
+  left:340px;
+  width:20px;
+  height:20px;
+  
+}
+  
+  
+  </style>
+</head>
+<body>
+
+  <a href="index.html"> 
+   <img class="imgfechar" src="fecharLG.png"/>    
+  </a>
+  
+  <a href="jogo.html"> 
+   <img class="imgVolta" src="voltaLG.png"/>    
+  </a>
+  
+  <h2>Descubra o Lugar!</h2>
+  <div id="quiz-container"></div>
+  <div id="results-container">
+    <h2>Resultados</h2>
+    <div id="results-table"></div>
+    <button id="restart-button" onclick="restartQuiz()">Reiniciar Quiz</button>
+  </div>
+
+  <script>
+    const quizData = [
+      { imageName: 'Lugar 1', correctAnswer: 'chacara', imageURL: 'fotoL1.jpg' },
+      { imageName: 'Lugar 2', correctAnswer: 'faculdade', imageURL: 'fotoL2.jpg' },
+      { imageName: 'Lugar 3', correctAnswer: 'casa', imageURL: 'fotoL3.jpg' },
+      { imageName: 'Lugar 4', correctAnswer: 'vó', imageURL: 'fotoL4.jpg' },
+      { imageName: 'Lugar 5', correctAnswer: 'sorveteria', imageURL: 'fotoL5.jpg' },
+      { imageName: 'Lugar 6', correctAnswer: 'faculdade', imageURL: 'fotoL6.jpg' },
+      { imageName: 'Lugar 7', correctAnswer: 'praça', imageURL: 'fotoL7.jpg' },
+      { imageName: 'Lugar 8', correctAnswer: 'shopping', imageURL: 'fotoL8.jpg' }
+    ];
+
+    let currentIndex = 0;
+    let correctAnswers = [];
+    let wrongAnswers = [];
+
+    function loadNextQuestion() {
+      const quizContainer = document.getElementById('quiz-container');
+      quizContainer.innerHTML = '';
+
+      if (currentIndex < quizData.length) {
+        const imageElement = document.createElement('img');
+        imageElement.src = quizData[currentIndex].imageURL;
+        imageElement.alt = quizData[currentIndex].imageName;
+        quizContainer.appendChild(imageElement);
+
+        const answerInput = document.createElement('input');
+        answerInput.type = 'text';
+        answerInput.placeholder = 'Digite sua resposta';
+        quizContainer.appendChild(answerInput);
+
+        const submitButton = document.createElement('button');
+        submitButton.textContent = 'Confirmar Resposta';
+        submitButton.onclick = checkAnswer;
+        quizContainer.appendChild(submitButton);
+
+        const feedbackDiv = document.createElement('div');
+        feedbackDiv.id = 'feedback';
+        quizContainer.appendChild(feedbackDiv);
+      } else {
+        showResults();
+      }
+    }
+
+    function checkAnswer() {
+      const userAnswer = document.querySelector('#quiz-container input').value;
+      const feedbackDiv = document.getElementById('feedback');
+
+      if (userAnswer.toLowerCase() === quizData[currentIndex].correctAnswer.toLowerCase()) {
+        feedbackDiv.innerHTML = '<p style="color: green;">Correto!</p>';
+        correctAnswers.push(quizData[currentIndex]);
+      } else {
+        feedbackDiv.innerHTML = '<p style="color: red;">Incorreto!</p>';
+        wrongAnswers.push(quizData[currentIndex]);
+      }
+
+      currentIndex++;
+
+      loadNextQuestion();
+    }
+
+    function showResults() {
+      const resultsContainer = document.getElementById('results-container');
+      const resultsTableContainer = document.getElementById('results-table');
+      resultsTableContainer.innerHTML = '';
+
+      // Tabela de respostas corretas
+      if (correctAnswers.length > 0) {
+        resultsTableContainer.innerHTML += '<h3 class="pA">Acertos</h3>';
+        resultsTableContainer.innerHTML += '<table>';
+        resultsTableContainer.innerHTML += '<tr><th></th><th></th></tr>';
+        correctAnswers.forEach(answer => {
+          resultsTableContainer.innerHTML += `<tr><td><img src="${answer.imageURL}" alt="${answer.imageName}"></td><td>${answer.correctAnswer}</td></tr>`;
+        });
+        resultsTableContainer.innerHTML += '</table>';
+      }
+
+      // Tabela de respostas incorretas
+      if (wrongAnswers.length > 0) {
+        resultsTableContainer.innerHTML += '<h3 class="pE">Erros</h3>';
+        resultsTableContainer.innerHTML += '<table>';
+        resultsTableContainer.innerHTML += '<tr><th></th><th><p class="pRC">Resposta Correta</p></th></tr>';
+        wrongAnswers.forEach(answer => {
+          resultsTableContainer.innerHTML += `<tr><td><img src="${answer.imageURL}" alt="${answer.imageName}"></td><td>${answer.correctAnswer}</td></tr>`;
+        });
+        resultsTableContainer.innerHTML += '</table>';
+      }
+
+      // Exibir resultados
+      resultsContainer.style.display = 'block';
+
+      // Rolagem para o topo
+      window.scrollTo(0, 0);
+    }
+
+    function restartQuiz() {
+      currentIndex = 0;
+      correctAnswers = [];
+      wrongAnswers = [];
+      loadNextQuestion();
+
+      // Ocultar resultados
+      document.getElementById('results-container').style.display = 'none';
+    }
+
+    // Carregar a primeira pergunta ao carregar a página
+    loadNextQuestion();
+  </script>
+</body>
+</html>

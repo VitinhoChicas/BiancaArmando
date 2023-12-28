@@ -1,0 +1,97 @@
+
+      <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Quis</title>
+    <link rel="stylesheet" type="text/css" href="quis.css">
+</head>
+<body>
+  
+ 
+  <a href="index.html"> 
+   <img class="imgfechar" src="fecharQS.png"/>    
+  </a>
+  
+  <a href="jogo.html" >
+ <img class="img4" src="voltarQuis.png" /> 
+  </a>
+        
+    
+  
+  
+  
+  
+  
+<input type="checkbox" id="myButton" class="hidden">
+ <label id="colorButton" for="myButton" class="button1">Fundo:Branco/Lilas</label>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <button id="toggleButton" class="fundo">Clique para ver sua nota</button>
+  
+  
+<div id="photoContainer" class="hidden">
+    
+  <div class="photo1">
+      <img class="img1" src="foto1.jpg" />
+      <img class="img2" src="foto2.jpg" />
+      <img class="img3" src="foto3.jpg" />
+    
+    
+    <p class="n1">RUIM</p>
+    <p class="n2">ACEITAVEL</p>
+    <p class="n3">BOA</p>
+    
+    <p class="p1">1 A 5</p>
+    <p class="p2">5 A 7</p>
+    <p class="p3">7 A 10</p>
+    
+    
+      
+    </div>
+  
+  
+  
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="quiz-container">
+        <h1>Quiz</h1>
+        <p class="pt" id="question">Qual é a capital do Brasil?</p>
+        <ul>
+            <li><button class="t"style="colorred" onclick="checkAnswer('A')">A) São Paulo</button></li>
+            <li><button onclick="checkAnswer('B')">B) Rio de Janeiro</button></li>
+            <li><button onclick="checkAnswer('C')">C) Brasília</button></li>
+        </ul>
+        <p id="result"></p>
+        <button id="next" class="b1" onclick="nextQuestion()">Próxima Pergunta</button>
+        <button id="restart" onclick="restartQuiz()">Reiniciar</button>
+    </div>
+  
+  
+
+
+    <script src="quis.js"></script>
+</body>
+</html>

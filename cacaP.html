@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Caça Palavra</title>
+  <link rel="stylesheet" type="text/css" href="cacaP.css">
+  
+  
+  
+</head>
+<body>
+  
+  <a href="index.html"> 
+   <img class="imgfechar" src="fecharCP.png"/>    
+  </a>
+  
+  <a href="jogo.html">
+ <img class="imgVolta" src="voltarCP.png"/>    
+  </a>
+  
+  <p class="p1">Caça Palavras</p>
+  
+  
+  
+    
+  
+  <table id="wordSearch">
+    <tr>
+        <td>N</td>
+        <td>A</td>
+        <td data-word="FLORA">F</td>
+        <td>M</td>
+        <td>B</td>
+        <td>V</td>
+        <td>A</td>
+        <td>X</td>
+        <td>T</td>
+        <td data-word="RIOPRETO">R</td>
+    </tr>
+    <tr>
+      <td >A</td>
+      <td >D</td>
+      <td data-word="FLORA">L</td>
+        <td>X</td>
+        <td>M</td>
+        <td>D</td>
+        <td>O</td>
+      <td >I</td>
+      <td >A</td>
+      <td data-word="RIOPRETO">I</td>
+    </tr>
+    <tr>
+      <td >P</td>
+      <td >O</td>
+      <td data-word="FLORA">O</td>
+        <td>Q</td>
+        <td>H</td>
+        <td>G</td>
+      <td >R</td>
+      <td >I</td>
+      <td >U</td>
+      <td data-word="RIOPRETO">O</td>
+    </tr>
+    <tr>
+        <td>Y</td>
+        <td>I</td>
+        <td data-word="FLORA">R</td>
+        <td >C</td>
+        <td>B</td>
+        <td>A</td>
+      <td >B</td>
+      <td >X</td>
+      <td >V</td>
+      <td data-word="RIOPRETO">P</td>
+    </tr>
+    <tr>
+        <td data-word="TUDO">O</td>
+        <td>P</td>
+        <td data-word="FLORA">A</td>
+        <td>N</td>
+        <td>D</td>
+        <td>Q</td>
+      <td >O</td>
+      <td >D</td>
+      <td >B</td>
+      <td data-word="RIOPRETO">R</td>
+    </tr>
+  
+  <tr>
+    <td data-word="TUDO" >D</td>
+      <td >L</td>
+      <td >V</td>
+      <td >W</td>
+    <td >P</td>
+      <td data-word="PRAIA">A</td>
+      <td >H</td>
+      <td >E</td>
+    <td >G</td>
+      <td data-word="RIOPRETO">E</td>
+  </tr>
+  
+  <tr>
+    <td data-word="TUDO">U</td>
+      <td >A</td>
+      <td >O</td>
+      <td >L</td>
+    <td >F</td>
+      <td >A</td>
+      <td data-word="PRAIA">I</td>
+      <td >Q</td>
+    <td >D</td>
+      <td data-word="RIOPRETO">T</td>
+  </tr>
+  
+  <tr>
+    <td data-word="TUDO">T</td>
+      <td >E</td>
+      <td >X</td>
+      <td >B</td>
+    <td >N</td>
+      <td >F</td>
+      <td >W</td>
+      <td data-word="PRAIA">A</td>
+    <td >Q</td>
+      <td data-word="RIOPRETO">O</td>
+  </tr>
+  
+  <tr>
+    <td >J</td>
+      <td >R</td>
+      <td >R</td>
+      <td >P</td>
+    <td >O</td>
+      <td >T</td>
+      <td >V</td>
+      <td >M</td>
+    <td data-word="PRAIA">R</td>
+      <td >L</td>
+  </tr>
+  
+  <tr>
+    <td data-word="CHEIRO">C</td>
+      <td data-word="CHEIRO">H</td>
+      <td data-word="CHEIRO">E</td>
+      <td data-word="CHEIRO">I</td>
+    <td data-word="CHEIRO">R</td>
+      <td data-word="CHEIRO">O</td>
+      <td >O</td>
+      <td >S</td>
+    <td> A</td>
+      <td data-word="PRAIA">P</td>
+  </tr>
+  
+  
+</table>
+  
+  <p class="p2">1</p>
+  <p class="p3">- Nome que escolhemos para nossa futura filha. </p>
+  
+  <p class="p4">2</p>
+  <p class="p5">- Nosso apelido.</p>
+  
+  <p class="p6">3</p>
+  <p class="p7">- O que eu mais gosto em você.</p>
+  
+  <p class="p8">4</p>
+  <p class="p9">- Lugar que pretendemos morar.</p>
+  
+   <p class="p10">5</p>
+  <p class="p11">- Onde vamos viajar.</p>
+  
+  
+  
+  
+  
+  <button onclick="toggleDiv()">RESPOSTA</button>
+
+  <div id="myDiv">
+    
+    <p class="pR"> 1 - FLORA</p>
+    <p class="pR"> 2 - CHEIRO</p>
+    <p class="pR"> 3 - TUDO</p>
+    <p class="pR"> 4 - RIO PRETO</p>
+    <p class="pR"> 5 - PRAIA</p>
+    
+    
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="divResposta" id="wordList"></div>
+  
+  
+  <script src="cacaP.js"></script>
+  
+</body>
+</html>
